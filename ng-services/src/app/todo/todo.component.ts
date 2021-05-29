@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, range } from 'rxjs';
 import { Todo } from '../types/todo.type';
 import { TodoService } from './todo.service';
 import { TodohttpService } from './todohttp.service';
@@ -54,9 +54,34 @@ export class TodoComponent implements OnInit {
 
     //initalize
     //this.todos = this.todoService.findAll();
+    this.init();
+  }
+
+  init(){
     this.todos = this.todohttp.findAll();
+  }
+  
+
+  saveTodo() {
+    const todo: Todo = {
+      userId: 6,
+      id: 103,
+      title: "learn angular",
+      completed: false
+    }
+    //send this todo server
+    this.todohttp.save(todo).subscribe(savedPost => {
+      if (savedPost) {
+        console.log('saved successfully')
+        alert('Todo saved')
+        this.init();
+      } else {
+        console.log('not saved')
+      }
+    })
 
   }
+
   ngOnDestroy(): void {
     //when ever the component is removed from memory
   }

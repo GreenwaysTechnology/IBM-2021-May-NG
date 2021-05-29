@@ -1,0 +1,14 @@
+<h1>Angular Routing App</h1>
+<hr />
+<nav>
+  <!-- <a href="/crisis-center" routerLinkActive="active">Crisis Center</a> -->
+  <a routerLink="/todo" routerLinkActive="active">Todo</a>
+  <a routerLink="/myheroes" routerLinkActive="active">My Heroes</a>
+  <a routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a>
+  <a routerLink="/superheroes" routerLinkActive="active">Heroes</a>
+  <a routerLink="/admin" routerLinkActive="active">Admin</a>
+  <a routerLink="/login" routerLinkActive="active">Login</a>
+  <a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
+</nav>
+<hr/>
+<router-outlet></router-outlet>
